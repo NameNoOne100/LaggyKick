@@ -37,24 +37,27 @@
 
         } else {
 
-          $player = $this->getServer()->getPlayer($args[0]);
-          $player_ip = $player->getAddress();
-          $get_ping = 'max-ping: ';
-          $config_file = file_get_contents($this->getDataFolder() . "ping.txt");
-          $max_ping = substr(strstr($config_file, $get_ping), strlen($get_ping));
+          if($player instanceof Player) {
 
-          $tB = microtime(true);
-          $fP = fSockOpen($player_ip, 80, $errno, $errstr, 10);
+            $player_ip = $player->getAddress();
+            $get_ping = 'max-ping: ';
+            $config_file = file_get_contents($this->getDataFolder() . "ping.txt");
+            $max_ping = substr(strstr($config_file, $get_ping), strlen($get_ping));
 
-          if(!($fP)) {
+            $tB = microtime(true);
+            $fP = fSockOpen($player_ip, 80, $errno, $errstr, 10);
 
-            $sender->sendMessage(TF::RED . $player . "'s IP: " . $player_ip . " was unreachable.");
+            if(!($fP)) {
+
+            $  sender->sendMessage(TF::RED . $player . "'s IP: " . $player_ip . " was unreachable.");
+
+            }
+
+            $tA = microtime(true);
+            $sender->sendMessage(TF::GREEN . "Pinging " . $player_ip . "...");
+            $sender->sendMessage(TF::GREEN . "Result: " . round((($tA - $tB) * 1000), 0) . "ms");
 
           }
-
-          $tA = microtime(true);
-          $sender->sendMessage(TF::GREEN . "Pinging " . $player_ip . "...");
-          $sender->sendMessage(TF::GREEN . "Result: " . round((($tA - $tB) * 1000), 0) . "ms");
 
         }
 
