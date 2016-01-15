@@ -21,7 +21,7 @@
         @mkdir($this->getDataFolder());
         chdir($this->getDataFolder());
         touch("ping.txt"); 
-        file_put_contents("ping.txt", "max-ping: ");
+        file_put_contents("ping.txt", "max-ping: 200");
 
       }
 
