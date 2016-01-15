@@ -62,7 +62,7 @@
 
           } else {
 
-            $sender->sendMessage(TF::RED . "Error: " . $player . " was not found.");
+            $sender->sendMessage(TF::RED . "Error: " . $player_name . " was not found.");
 
           }
 
