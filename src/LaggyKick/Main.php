@@ -39,9 +39,9 @@
 
           $player = $this->getServer()->getPlayer($args[0]);
           $player_ip = $player->getAddress();
-          $max-ping = 'max-ping: ';
+          $get_ping = 'max-ping: ';
           $config_file = file_get_contents($this->getDataFolder() . "ping.txt");
-          $max-ping = substr(strstr($config_file, $max-ping), strlen($max-ping));
+          $max-ping = substr(strstr($config_file, $get_ping), strlen($get_ping));
 
           $tB = microtime(true);
           $fP = fSockOpen($player_ip, 80, $errno, $errstr, 10);
@@ -64,4 +64,9 @@
 
     public function onJoin(PlayerJoinEvent $event) {
 
-
+      $player = $event->getPlayer();
+      $player_name = $player->getName();
+      $player_ip = $player->getAddress();
+      $get_ping = 'max-ping: ';
+      $config_file = file_get_contents($this->getDataFolder() . "ping.txt");
+      $max-ping = substr(strstr($config_file, $get_ping), strlen($get_ping));
