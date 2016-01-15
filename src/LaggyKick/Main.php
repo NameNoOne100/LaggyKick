@@ -37,7 +37,20 @@
 
         } else {
 
-          $player = $args[0];
+          $player = $this->getServer()->getPlayer($args[0]);
+          $player_ip = $player->getAddress();
           $max-ping = 'max-ping: ';
           $config_file = file_get_contents($this->getDataFolder() . "ping.txt");
-          $max-ping = substr(strstr($config_file, $max-ping), strlen($max_ping));
+          $max-ping = substr(strstr($config_file, $max-ping), strlen($max-ping));
+
+          $tB = microtime(true);
+          $fP = fSockOpen($player_ip, 80, $errno, $errstr, 10);
+
+          if(!($fP)) {
+
+            $sender->sendMessage(TF::RED . $player . "'s IP: " . $player_ip . " was unreachable.");
+
+          }
+
+          $tA = microtime(true);
+          $sender->sendMessage(TF::GREEN . "Pinging
