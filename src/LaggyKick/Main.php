@@ -70,3 +70,27 @@
       $get_ping = 'max-ping: ';
       $config_file = file_get_contents($this->getDataFolder() . "ping.txt");
       $max-ping = substr(strstr($config_file, $get_ping), strlen($get_ping));
+
+      $tB = microtime(true);
+      $fP = fSockOpen($player_ip, 80, $errno, $errstr, 10);
+
+      if(!($fP)) {
+
+        $sender->sendMessage(TF::RED . $player . "'s IP: " . $player_ip . " was unreachable.");
+
+      }
+
+      $tA = microtime(true);
+      $ping_result = round((($tA - $tB) * 1000), 0);
+
+      if($ping_result >= $max-ping) {
+
+        $player->kick("Sorry, your ping is too high(too laggy), so you have been kicked.");
+
+      }
+
+    }
+
+  }
+
+?>
