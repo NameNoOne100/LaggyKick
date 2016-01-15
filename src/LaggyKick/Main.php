@@ -53,4 +53,15 @@
           }
 
           $tA = microtime(true);
-          $sender->sendMessage(TF::GREEN . "Pinging
+          $sender->sendMessage(TF::GREEN . "Pinging " . $player_ip . "...");
+          $sender->sendMessage(TF::GREEN . "Result: " . round((($tA - $tB) * 1000), 0) . "ms");
+
+        }
+
+      }
+
+    }
+
+    public function onJoin(PlayerJoinEvent $event) {
+
+
