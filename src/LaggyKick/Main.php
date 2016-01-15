@@ -37,6 +37,8 @@
 
         } else {
 
+          $player = $this->getServer()->getPlayer($args[0]);
+
           if($player instanceof Player) {
 
             $player_ip = $player->getAddress();
@@ -49,7 +51,7 @@
 
             if(!($fP)) {
 
-            $  sender->sendMessage(TF::RED . $player . "'s IP: " . $player_ip . " was unreachable.");
+              $sender->sendMessage(TF::RED . $player . "'s IP: " . $player_ip . " was unreachable.");
 
             }
 
