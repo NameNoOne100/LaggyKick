@@ -59,6 +59,10 @@
             $sender->sendMessage(TF::GREEN . "Pinging " . $player_ip . "...");
             $sender->sendMessage(TF::GREEN . "Result: " . round((($tA - $tB) * 1000), 0) . "ms");
 
+          } else {
+
+            $sender->sendMessage(TF::RED . "Error: " . $player . " was not found.");
+
           }
 
         }
