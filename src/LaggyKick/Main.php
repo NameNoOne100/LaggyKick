@@ -41,6 +41,7 @@
 
           if($player instanceof Player) {
 
+            $player_name = $player->getName();
             $player_ip = $player->getAddress();
             $get_ping = 'max-ping: ';
             $config_file = file_get_contents($this->getDataFolder() . "ping.txt");
@@ -51,7 +52,7 @@
 
             if(!($fP)) {
 
-              $sender->sendMessage(TF::RED . $player . "'s IP: " . $player_ip . " was unreachable.");
+              $sender->sendMessage(TF::RED . $player_name . "'s IP: " . $player_ip . " was unreachable.");
 
             }
 
