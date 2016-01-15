@@ -1,0 +1,12 @@
+name: LaggyKick
+version: 1.0.0
+api: [1.0.0]
+main: LaggyKick\Main
+commands:
+  ping:
+    usage: "/ping <player>"
+    description: Ping A Player.
+    permission: laggykick.command.ping
+permissions:
+  laggykick.command.ping:
+    default: op
